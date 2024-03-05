@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.26 FATAL_ERROR)
 project(driss_torch LANGUAGES CXX CUDA)
 
 # Set the C++ standard for all targets
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 20) # This might be unsafe since pytorch use std17
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Enable better clangd support

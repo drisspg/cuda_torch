@@ -1,10 +1,17 @@
 #pragma once
 
+#include <cstdio>
 #include <functional>
 #include <stdio.h>
 
-
 namespace driss_torch {
+
+template <typename... Args>
+__device__ void thread_zero_print(const char *fmt, Args &&...args) {
+  if (threadIdx.x == 0 && blockIdx.x == 0) {
+    printf(fmt, std::forward<Args>(args)...);
+  }
+}
 
 // error checking macro
 #define cudaCheckErrors(msg)                                                   \
